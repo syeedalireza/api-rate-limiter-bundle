@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: ratelimiter-redis
+    command: redis-server --requirepass ${REDIS_PASSWORD:-ratelimiter_secret}
+    ports:
+      - "127.0.0.1:6379:6379"
+    networks:
+      - ratelimiter-network
+
+networks:
+  ratelimiter-network:
+    driver: bridge
