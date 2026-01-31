@@ -1,0 +1,22 @@
+deptrac:
+  paths:
+    - ./src
+  layers:
+    - name: Strategy
+      collectors:
+        - type: directory
+          value: src/Strategy/.*
+    - name: Storage
+      collectors:
+        - type: directory
+          value: src/Storage/.*
+    - name: Service
+      collectors:
+        - type: directory
+          value: src/Service/.*
+  ruleset:
+    Strategy:
+      - Storage
+    Service:
+      - Strategy
+      - Storage
